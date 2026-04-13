@@ -218,6 +218,12 @@
   <script>
       // The URL to game.zip, relative to the URL of this file.
       window.gameZipURL = 'game.zip';
+      const instantiateStreaming = async () => {
+        const response = await fetch('renpy.wasm');
+        const { instance } = await WebAssembly.instantiateStreaming(response);
+        // ...初始化逻辑
+      };
+      instantiateStreaming();
 
       // Register the service worker.
       if (navigator.serviceWorker) {
